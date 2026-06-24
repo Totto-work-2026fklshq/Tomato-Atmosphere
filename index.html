@@ -677,6 +677,47 @@
             letter-spacing: 0.04em;
         }
 
+        .works-stream-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 18px;
+        }
+
+        .stream-link {
+            min-height: 42px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 16px;
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            border-radius: 999px;
+            background: rgba(244, 232, 222, 0.1);
+            color: var(--ivory);
+            font-family: "Manrope", sans-serif;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            box-shadow:
+                inset 0 1px 0 rgba(255, 255, 255, 0.12),
+                0 14px 32px rgba(0, 0, 0, 0.22);
+            transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+        }
+
+        .stream-link:hover {
+            transform: translateY(-2px);
+            border-color: rgba(255, 122, 61, 0.5);
+            background: rgba(233, 71, 34, 0.18);
+        }
+
+        .stream-link.primary {
+            border-color: transparent;
+            background: linear-gradient(135deg, var(--signal-red), var(--warm-neon));
+            color: #170604;
+        }
+
         .works-carousel {
             display: flex;
             align-items: center;
@@ -924,6 +965,10 @@
                 overflow-x: auto;
             }
 
+            .stream-link {
+                flex: 1 1 140px;
+            }
+
             footer {
                 flex-direction: column;
             }
@@ -1006,6 +1051,10 @@
                         <div class="works-caption">
                             <h3 id="works-main-title">Storm</h3>
                             <p id="works-main-meta">Tomato Atmosphere ・ Single 2026.05</p>
+                            <div class="works-stream-links" aria-label="Streaming links">
+                                <a id="works-spotify-link" class="stream-link primary" href="https://open.spotify.com/intl-ja/track/4o9zeIws5HJwdNtenRYkX9?si=78e8f6c213d54d68" target="_blank" rel="noopener noreferrer">Spotify</a>
+                                <a id="works-apple-link" class="stream-link" href="https://music.apple.com/jp/song/storm/6771268360" target="_blank" rel="noopener noreferrer">Apple Music</a>
+                            </div>
                         </div>
                         <div class="works-carousel" aria-label="Track selector">
                             <button class="works-thumb" type="button" data-work="way-back" aria-label="Show Way Back artwork" aria-pressed="false">
@@ -1068,31 +1117,41 @@
                 title: "Way Back",
                 meta: "Tomato Atmosphere ・ EP 2025.11",
                 src: "assets/way-back-artwork.jpg",
-                alt: "Way Back artwork"
+                alt: "Way Back artwork",
+                spotify: "https://open.spotify.com/intl-ja/track/0UJ7YPPr2sRgadPmKpVl9v?si=2bfaaffb7dde445b",
+                apple: "https://music.apple.com/jp/song/way-back/1838440366"
             },
             "deep-flow": {
                 title: "Deep Flow",
                 meta: "Tomato Atmosphere ・ Single 2025.12",
                 src: "assets/deep-flow-artwork.jpg",
-                alt: "Deep Flow artwork"
+                alt: "Deep Flow artwork",
+                spotify: "https://open.spotify.com/intl-ja/track/3lS19P9ltgaWWWVwMqzgvn?si=5e48ed3473ad4c81",
+                apple: "https://music.apple.com/jp/song/deep-flow/1852839580"
             },
             "alive": {
                 title: "Alive",
                 meta: "Tomato Atmosphere ・ Single 2026.02",
                 src: "assets/alive-artwork.jpg",
-                alt: "Alive artwork"
+                alt: "Alive artwork",
+                spotify: "https://open.spotify.com/intl-ja/track/6JfAYPN6saX8jTeteYw5gY?si=38c9daa49e344ef4",
+                apple: "https://music.apple.com/jp/song/alive/1880156908"
             },
             "storm": {
                 title: "Storm",
                 meta: "Tomato Atmosphere ・ Single 2026.05",
                 src: "assets/storm-artwork.jpg",
-                alt: "Storm artwork"
+                alt: "Storm artwork",
+                spotify: "https://open.spotify.com/intl-ja/track/4o9zeIws5HJwdNtenRYkX9?si=78e8f6c213d54d68",
+                apple: "https://music.apple.com/jp/song/storm/6771268360"
             }
         };
 
         const mainArt = document.querySelector("#works-main-art");
         const mainTitle = document.querySelector("#works-main-title");
         const mainMeta = document.querySelector("#works-main-meta");
+        const spotifyLink = document.querySelector("#works-spotify-link");
+        const appleLink = document.querySelector("#works-apple-link");
         const selectors = document.querySelectorAll("[data-work]");
 
         function setActiveWork(key) {
@@ -1108,6 +1167,8 @@
                 mainArt.alt = work.alt;
                 mainTitle.textContent = work.title;
                 mainMeta.textContent = work.meta;
+                spotifyLink.href = work.spotify;
+                appleLink.href = work.apple;
 
                 selectors.forEach((selector) => {
                     const isActive = selector.dataset.work === key;
