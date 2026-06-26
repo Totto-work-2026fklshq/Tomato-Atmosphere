@@ -449,8 +449,8 @@
             position: relative;
             z-index: 1;
             display: grid;
-            align-content: space-between;
-            gap: 28px;
+            align-content: start;
+            gap: 18px;
             padding: clamp(18px, 3vw, 30px);
             border-right: 1px solid rgba(255, 255, 255, 0.08);
         }
@@ -828,6 +828,18 @@
             background: rgba(5, 4, 3, 0.36);
         }
 
+        .about-image {
+            display: block;
+            width: 100%;
+            margin-top: 24px;
+            aspect-ratio: 4 / 5;
+            object-fit: cover;
+            object-position: center;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            border-radius: 22px;
+            box-shadow: 0 22px 58px rgba(0, 0, 0, 0.34);
+        }
+
         .about-mark strong {
             display: block;
             font-family: "Manrope", sans-serif;
@@ -965,8 +977,16 @@
             }
 
             .hero-actions {
-                flex-direction: column;
-                align-items: stretch;
+                align-items: center;
+                gap: 10px;
+                margin-top: 28px;
+            }
+
+            .hero-actions .button {
+                flex: 0 0 auto;
+                min-height: 44px;
+                padding-inline: 18px;
+                font-size: 12px;
             }
 
             section {
@@ -1109,8 +1129,7 @@
                                 </a>
                                 <a id="works-apple-link" class="stream-link" href="https://music.apple.com/jp/song/storm/6771268360" target="_blank" rel="noopener noreferrer" aria-label="Listen to Storm on Apple Music">
                                     <svg viewBox="0 0 24 24" role="img" aria-hidden="true" focusable="false">
-                                        <rect x="4" y="3" width="16" height="18" rx="4" fill="none" stroke="currentColor" stroke-width="1.4"></rect>
-                                        <path d="M15.8 6.8v8.1a2.5 2.5 0 1 1-1.2-2.1V8.7l-5.4 1.1v6a2.5 2.5 0 1 1-1.2-2.1V8.4l7.8-1.6Z" fill="currentColor"></path>
+                                        <path d="M16.2 6.8v8.2a2.35 2.35 0 1 1-1.15-2.02V9.15l-5.1 1.05v5.15a2.35 2.35 0 1 1-1.15-2.02V8.25l7.4-1.45Z" fill="currentColor"></path>
                                     </svg>
                                     <span class="sr-only">Apple Music</span>
                                 </a>
@@ -1141,6 +1160,7 @@
                 <div class="about-mark">
                     <p class="section-kicker">About</p>
                     <strong id="about-title">Red light, quiet motion.</strong>
+                    <img class="about-image" src="assets/tomato-atmosphere-artwork.png" alt="Tomato Atmosphere visual">
                 </div>
                 <div class="about-text">
                     <p>
